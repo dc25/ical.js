@@ -107,7 +107,10 @@ module.exports = function(grunt) {
     },
 
     eslint: {
-      src: ['<%= libinfo.absfiles %>']
+      src: ['<%= libinfo.absfiles %>'],
+      options: {
+          parser: "@typescript-eslint/parser"
+      }
     },
 
     mochacli: {
