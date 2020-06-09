@@ -442,7 +442,7 @@
       dict.count = ICAL.helpers.strictParseInt(value);
     },
 
-    INTERVAL: function(value, dict, fmtIcal) {
+    INTERVAL: function(value, dict, fmtIcal?) {
       dict.interval = ICAL.helpers.strictParseInt(value);
       if (dict.interval < 1) {
         // 0 or negative values are not allowed, some engines seem to generate

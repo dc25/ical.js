@@ -675,7 +675,7 @@ ICAL.RecurIterator = (function() {
 
         if (this.has_by_data("BYSETPOS")) {
           var last_day = this.last.day;
-          for (var day = 1; day <= daysInMonth; day++) {
+          for (let day = 1; day <= daysInMonth; day++) {
             this.last.day = day;
             if (this.is_day_in_byday(this.last)) {
               setpos_total++;
@@ -688,7 +688,8 @@ ICAL.RecurIterator = (function() {
         }
 
         data_valid = 0;
-        for (var day = this.last.day + 1; day <= daysInMonth; day++) {
+        let day;
+        for (day = this.last.day + 1; day <= daysInMonth; day++) {
           this.last.day = day;
 
           if (this.is_day_in_byday(this.last)) {
@@ -723,7 +724,7 @@ ICAL.RecurIterator = (function() {
         }
 
         var daysInMonth = ICAL.Time.daysInMonth(this.last.month, this.last.year);
-        var day = this.by_data.BYMONTHDAY[this.by_indices.BYMONTHDAY];
+        let day = this.by_data.BYMONTHDAY[this.by_indices.BYMONTHDAY];
 
         if (day < 0) {
           day = daysInMonth + day + 1;
@@ -954,7 +955,7 @@ ICAL.RecurIterator = (function() {
       this.days = [];
 
       // We need our own copy with a few keys set
-      var parts = {};
+      var parts:{[k:string]:any} = {};
       var rules = ["BYDAY", "BYWEEKNO", "BYMONTHDAY", "BYMONTH", "BYYEARDAY"];
       for (var p in rules) {
         /* istanbul ignore else */
@@ -1152,7 +1153,7 @@ ICAL.RecurIterator = (function() {
           if (!expandedDays.hasOwnProperty(daykey)) {
             continue;
           }
-          var day = expandedDays[daykey];
+          let day = expandedDays[daykey];
           var tt = ICAL.Time.fromDayOfYear(day, aYear);
           if (this.by_data.BYMONTHDAY.indexOf(tt.day) >= 0) {
             this.days.push(day);
@@ -1169,7 +1170,7 @@ ICAL.RecurIterator = (function() {
           if (!expandedDays.hasOwnProperty(daykey)) {
             continue;
           }
-          var day = expandedDays[daykey];
+          let day = expandedDays[daykey];
           var tt = ICAL.Time.fromDayOfYear(day, aYear);
 
           if (this.by_data.BYMONTH.indexOf(tt.month) >= 0 &&
@@ -1185,7 +1186,7 @@ ICAL.RecurIterator = (function() {
           if (!expandedDays.hasOwnProperty(daykey)) {
             continue;
           }
-          var day = expandedDays[daykey];
+          let day = expandedDays[daykey];
           var tt = ICAL.Time.fromDayOfYear(day, aYear);
           var weekno = tt.weekNumber(this.rule.wkst);
 

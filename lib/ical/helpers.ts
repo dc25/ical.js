@@ -3,12 +3,14 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  * Portions Copyright (C) Philipp Kewisch, 2011-2015 */
 
+/* local definition for non-standard function: dump */
+declare var dump: (s:string) => void;
 
 /* istanbul ignore next */
 /* jshint ignore:start */
 if (typeof module === 'object') {
   // CommonJS, where exports may be different each time.
-  ICAL = module.exports;
+  var ICAL = module.exports;
 } else if (typeof ICAL !== 'object') {/* istanbul ignore next */
   /** @ignore */
   this.ICAL = {};
@@ -307,7 +309,7 @@ ICAL.helpers = {
     if (typeof(data) !== 'string') {
       // handle fractions.
       if (typeof(data) === 'number') {
-        data = parseInt(data);
+        data = parseInt(data.toString());
       }
       data = String(data);
     }

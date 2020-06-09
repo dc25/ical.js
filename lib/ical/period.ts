@@ -170,7 +170,7 @@
       );
     }
 
-    var options = {
+    var options:{[k:string]: any} = {
       start: ICAL.Time.fromDateTimeString(parts[0], prop)
     };
 

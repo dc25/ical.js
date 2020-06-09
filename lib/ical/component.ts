@@ -26,7 +26,7 @@ ICAL.Component = (function() {
    *                                      component
    * @param {ICAL.Component} parent     Parent component to associate
    */
-  function Component(jCal, parent) {
+  function Component(jCal, parent?) {
     if (typeof(jCal) === 'string') {
       // jCal spec (name, properties, components)
       jCal = [jCal, [], []];

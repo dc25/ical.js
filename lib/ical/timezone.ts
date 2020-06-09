@@ -305,7 +305,7 @@
       }
 
       function init_changes() {
-        var changebase = {};
+        var changebase:{[k:string]:any} = {};
         changebase.is_daylight = (aComponent.name == "daylight");
         changebase.utcOffset = convert_tzoffset(
           aComponent.getFirstProperty("tzoffsetto").getFirstValue()

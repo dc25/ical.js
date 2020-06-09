@@ -200,7 +200,7 @@ ICAL.Event = (function() {
       var id = occurrence.toString();
       var utcId = occurrence.convertToZone(ICAL.Timezone.utcTimezone).toString();
       var item;
-      var result = {
+      var result:{[k:string]:any} = {
         //XXX: Clone?
         recurrenceId: occurrence
       };
@@ -413,7 +413,7 @@ ICAL.Event = (function() {
     },
 
     set location(value) {
-      return this._setProp('location', value);
+      this._setProp('location', value);
     },
 
     /**

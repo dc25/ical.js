@@ -59,8 +59,9 @@ ICAL.parse = (function() {
    * @return {Object|Object[]}  A single jCal object, or an array thereof
    */
   function parser(input) {
-    var state = {};
-    var root = state.component = [];
+    var state: {[k: string]: any} = {};
+    var root = [];
+    state.component = [];
 
     state.stack = [root];
 
@@ -153,7 +154,7 @@ ICAL.parse = (function() {
     // params is only overridden if paramPos !== -1.
     // we can't do params = params || {} later on
     // because it sacrifices ops.
-    var params = {};
+    var params: {[k: string]: any} = {};
 
     /**
      * Different property cases
@@ -306,7 +307,7 @@ ICAL.parse = (function() {
    * @param {Object} designSet      The design data to use for this value
    * @return {Object} varies on type
    */
-  parser._parseValue = function(value, type, designSet, structuredValue) {
+  parser._parseValue = function(value, type, designSet, structuredValue?) {
     if (type in designSet.value && 'fromICAL' in designSet.value[type]) {
       return designSet.value[type].fromICAL(value, structuredValue);
     }
@@ -326,6 +327,7 @@ ICAL.parse = (function() {
   parser._parseParameters = function(line, start, designSet) {
     var lastParam = start;
     var pos = 0;
+    let continueLoop:boolean = true;
     var delim = PARAM_NAME_DELIMITER;
     var result = {};
     var name, lcname;
@@ -337,7 +339,7 @@ ICAL.parse = (function() {
     // check if " is used if so get value from "->"
     // then increment pos to find next ;
 
-    while ((pos !== false) &&
+    while (continueLoop &&
            (pos = helpers.unescapedIndexOf(line, delim, pos + 1)) !== -1) {
 
       name = line.substr(lastParam + 1, pos - lastParam - 1);
@@ -383,7 +385,7 @@ ICAL.parse = (function() {
         value = line.substr(valuePos, pos - valuePos);
         lastParam = helpers.unescapedIndexOf(line, PARAM_DELIMITER, pos);
         if (lastParam === -1) {
-          pos = false;
+          continueLoop = false;
         }
       } else {
         valuePos = pos + 1;
@@ -394,7 +396,7 @@ ICAL.parse = (function() {
         if (propValuePos !== -1 && nextPos > propValuePos) {
           // this is a delimiter in the property value, let's stop here
           nextPos = propValuePos;
-          pos = false;
+          continueLoop = false;
         } else if (nextPos === -1) {
           // no ";"
           if (propValuePos === -1) {
@@ -402,7 +404,7 @@ ICAL.parse = (function() {
           } else {
             nextPos = propValuePos;
           }
-          pos = false;
+          continueLoop = false;
         } else {
           lastParam = nextPos;
           pos = nextPos;
@@ -465,7 +467,7 @@ ICAL.parse = (function() {
    * @param {ICAL.design.designSet} designSet   The design data for this value
    * @return {?|Array.<?>}            Either an array of results, or the first result
    */
-  parser._parseMultiValue = function(buffer, delim, type, result, innerMulti, designSet, structuredValue) {
+  parser._parseMultiValue = function(buffer, delim, type, result, innerMulti, designSet, structuredValue?) {
     var pos = 0;
     var lastPos = 0;
     var value;

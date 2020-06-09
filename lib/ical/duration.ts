@@ -190,7 +190,16 @@
     compare: function compare(aOther) {
       var thisSeconds = this.toSeconds();
       var otherSeconds = aOther.toSeconds();
-      return (thisSeconds > otherSeconds) - (thisSeconds < otherSeconds);
+
+      let res:number = 0;
+      if(thisSeconds > otherSeconds) {
+          res = 1;
+      } else {
+        if(thisSeconds < otherSeconds) {
+          res = -1;
+        }
+      }
+      return res;
     },
 
     /**

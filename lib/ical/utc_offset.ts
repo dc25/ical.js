@@ -22,7 +22,7 @@ ICAL.UtcOffset = (function() {
    * @param {Number=} aData.minutes The minutes in the utc offset
    * @param {Number=} aData.factor  The factor for the utc-offset, either -1 or 1
    */
-  function UtcOffset(aData) {
+  function UtcOffset(aData?) {
     this.fromData(aData);
   }
 
@@ -72,7 +72,7 @@ ICAL.UtcOffset = (function() {
      * @param {Number=} aData.minutes The minutes in the utc offset
      * @param {Number=} aData.factor  The factor for the utc-offset, either -1 or 1
      */
-    fromData: function(aData) {
+    fromData: function(aData?) {
       if (aData) {
         for (var key in aData) {
           /* istanbul ignore else */
@@ -120,7 +120,15 @@ ICAL.UtcOffset = (function() {
     compare: function icaltime_compare(other) {
       var a = this.toSeconds();
       var b = other.toSeconds();
-      return (a > b) - (b > a);
+      let res:number=0;
+      if (a>b) {
+          res=1;
+      } else {
+        if (a<b) {
+          res=-1;
+        }
+      }
+      return res;
     },
 
     _normalize: function() {
@@ -169,7 +177,7 @@ ICAL.UtcOffset = (function() {
    */
   UtcOffset.fromString = function(aString) {
     // -05:00
-    var options = {};
+    var options:{[k:string]: any} = {};
     //TODO: support seconds per rfc5545 ?
     options.factor = (aString[0] === '+') ? 1 : -1;
     options.hours = ICAL.helpers.strictParseInt(aString.substr(1, 2));

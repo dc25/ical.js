@@ -37,7 +37,7 @@ ICAL.Property = (function() {
    *
    * @param {ICAL.Component=} parent    Parent component
    */
-  function Property(jCal, parent) {
+  function Property(jCal, parent?) {
     this._parent = parent || null;
 
     if (typeof(jCal) === 'string') {
@@ -90,7 +90,6 @@ ICAL.Property = (function() {
         this._updateType();
       }
 
-      return p;
     },
 
     /**

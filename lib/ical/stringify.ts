@@ -57,7 +57,7 @@ ICAL.stringify = (function() {
    *        The design data to use for this component
    * @return {String}       The iCalendar/vCard string
    */
-  stringify.component = function(component, designSet) {
+  stringify.component = function(component, designSet?) {
     var name = component[0].toUpperCase();
     var result = 'BEGIN:' + name + LINE_ENDING;
 
@@ -103,7 +103,7 @@ ICAL.stringify = (function() {
    *        If true, the line is not folded
    * @return {String}       The iCalendar/vCard string
    */
-  stringify.property = function(property, designSet, noFold) {
+  stringify.property = function(property, designSet, noFold?) {
     var name = property[0].toUpperCase();
     var jsName = property[0];
     var params = property[1];
@@ -116,7 +116,7 @@ ICAL.stringify = (function() {
 
       /* istanbul ignore else */
       if (params.hasOwnProperty(paramName)) {
-        var multiValue = (paramName in designSet.param) && designSet.param[paramName].multiValue;
+        let multiValue = (paramName in designSet.param) && designSet.param[paramName].multiValue;
         if (multiValue && Array.isArray(value)) {
           if (designSet.param[paramName].multiValueSeparateDQuote) {
             multiValue = '"' + multiValue + '"';
@@ -243,7 +243,7 @@ ICAL.stringify = (function() {
    *
    * @return {String}           iCalendar/vCard string for value
    */
-  stringify.multiValue = function(values, delim, type, innerMulti, designSet, structuredValue) {
+  stringify.multiValue = function(values, delim, type, innerMulti, designSet, structuredValue?) {
     var result = '';
     var len = values.length;
     var i = 0;
