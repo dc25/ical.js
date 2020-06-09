@@ -63,6 +63,17 @@ module.exports = function(grunt) {
       }
     },
 
+    ts: {
+        dist: {
+            src: ['<%= libinfo.absfiles %>'],
+            out: 'build/ical.js',
+            options: {
+                target: 'es5',
+                fast: 'never'
+            }
+        },
+    },
+
     mocha_istanbul: {
       coverage: {
         src: ['<%= libinfo.test.unit %>', '<%= libinfo.test.acceptance %>'],
@@ -252,6 +263,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-istanbul');
   grunt.loadNpmTasks('grunt-release');
   grunt.loadNpmTasks('gruntify-eslint');
+  grunt.loadNpmTasks('grunt-ts');
 
   loadOptionalTask('grunt-node-inspector');
 
