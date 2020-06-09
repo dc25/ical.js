@@ -192,10 +192,10 @@
       var otherSeconds = aOther.toSeconds();
 
       let res:number = 0;
-      if(thisSeconds > otherSeconds) {
+      if (thisSeconds > otherSeconds) {
           res = 1;
       } else {
-        if(thisSeconds < otherSeconds) {
+        if (thisSeconds < otherSeconds) {
           res = -1;
         }
       }
