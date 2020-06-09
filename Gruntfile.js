@@ -18,11 +18,11 @@ module.exports = function(grunt) {
       cwd: 'lib/ical',
       doc: 'api',
       files: [
-        'helpers.js', 'design.js', 'stringify.js', 'parse.js', 'component.js',
-        'property.js', 'utc_offset.js', 'binary.js', 'period.js', 'duration.js',
-        'timezone.js', 'timezone_service.js', 'time.js', 'vcard_time.js',
-        'recur.js', 'recur_iterator.js', 'recur_expansion.js', 'event.js',
-        'component_parser.js'
+        'helpers.ts', 'design.ts', 'stringify.ts', 'parse.ts', 'component.ts',
+        'property.ts', 'utc_offset.ts', 'binary.ts', 'period.ts', 'duration.ts',
+        'timezone.ts', 'timezone_service.ts', 'time.ts', 'vcard_time.ts',
+        'recur.ts', 'recur_iterator.ts', 'recur_expansion.ts', 'event.ts',
+        'component_parser.ts'
       ],
       test: {
         head: ['test/helper.js'],
@@ -62,7 +62,6 @@ module.exports = function(grunt) {
         dest: '<%= libinfo.validator.dest %>'
       }
     },
-
     ts: {
         dist: {
             src: ['<%= libinfo.absfiles %>'],
@@ -73,7 +72,6 @@ module.exports = function(grunt) {
             }
         },
     },
-
     mocha_istanbul: {
       coverage: {
         src: ['<%= libinfo.test.unit %>', '<%= libinfo.test.acceptance %>'],
@@ -270,7 +268,7 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks');
 
   grunt.registerTask('default', ['package']);
-  grunt.registerTask('package', ['concat:dist', 'uglify']);
+  grunt.registerTask('package', ['ts:dist', 'uglify']);
   grunt.registerTask('coverage', 'mocha_istanbul');
   grunt.registerTask('linters', ['eslint']);
   grunt.registerTask('test-browser', ['karma:unit', 'karma:acceptance']);
