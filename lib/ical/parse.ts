@@ -60,8 +60,7 @@ ICAL.parse = (function() {
    */
   function parser(input) {
     var state: {[k: string]: any} = {};
-    var root = [];
-    state.component = [];
+    var root = state.component = [];
 
     state.stack = [root];
 
