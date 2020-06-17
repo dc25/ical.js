@@ -18,6 +18,7 @@ module.exports = function(grunt) {
       cwd: 'lib/ical',
       doc: 'api',
       files: [
+        'globalICAL.ts', 
         'helpers.ts', 'design.ts', 'stringify.ts', 'parse.ts', 'component.ts',
         'property.ts', 'utc_offset.ts', 'binary.ts', 'period.ts', 'duration.ts',
         'timezone.ts', 'timezone_service.ts', 'time.ts', 'vcard_time.ts',

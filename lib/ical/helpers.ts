@@ -6,18 +6,6 @@
 /* local definition for non-standard function: dump */
 declare var dump: (s:string) => void;
 
-/* istanbul ignore next */
-/* jshint ignore:start */
-if (typeof module === 'object') {
-  // CommonJS, where exports may be different each time.
-  var ICAL = module.exports;
-} else if (typeof ICAL !== 'object') {/* istanbul ignore next */
-  /** @ignore */
-  this.ICAL = {};
-}
-/* jshint ignore:end */
-
-
 /**
  * The number of characters before iCalendar line folding should occur
  * @type {Number}
