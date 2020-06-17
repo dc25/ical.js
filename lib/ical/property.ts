@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  * Portions Copyright (C) Philipp Kewisch, 2011-2015 */
 
-
 /**
  * This symbol is further described later on
  * @ignore
@@ -313,7 +312,7 @@ ICAL.Property = (function() {
       }
 
       var i = 0;
-      var result = [];
+      var result:any[] = [];
 
       for (; i < len; i++) {
         result[i] = this._hydrateValue(i);

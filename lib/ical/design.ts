@@ -5,7 +5,6 @@
 
 /** @namespace ICAL */
 
-
 /**
  * This symbol is further described later on
  * @ignore

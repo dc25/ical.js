@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  * Portions Copyright (C) Philipp Kewisch, 2011-2015 */
 
-
 /**
  * Contains various functions to convert jCal and jCard data back into
  * iCalendar and vCard.
@@ -217,9 +216,9 @@ ICAL.stringify = (function() {
    */
   stringify.propertyValue = function(value) {
 
-    if ((helpers.unescapedIndexOf(value, ',') === -1) &&
-        (helpers.unescapedIndexOf(value, ':') === -1) &&
-        (helpers.unescapedIndexOf(value, ';') === -1)) {
+    if ((helpers.unescapedIndexOf(value, ',', 0) === -1) &&
+        (helpers.unescapedIndexOf(value, ':', 0) === -1) &&
+        (helpers.unescapedIndexOf(value, ';', 0) === -1)) {
 
       return value;
     }

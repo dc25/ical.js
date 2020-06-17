@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  * Portions Copyright (C) Philipp Kewisch, 2011-2015 */
 
-
 /**
  * This symbol is further described later on
  * @ignore

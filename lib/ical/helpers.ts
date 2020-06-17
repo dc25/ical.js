@@ -254,7 +254,7 @@ ICAL.helpers = {
     } else if ("clone" in aSrc) {
       return aSrc.clone();
     } else if (Array.isArray(aSrc)) {
-      var arr = [];
+      var arr:any[] = [];
       for (var i = 0; i < aSrc.length; i++) {
         arr.push(aDeep ? ICAL.helpers.clone(aSrc[i], true) : aSrc[i]);
       }

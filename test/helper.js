@@ -51,31 +51,7 @@
 
   /* cross require */
   testSupport.requireICAL = function() {
-    var files = [
-      'helpers',
-      'recur_expansion',
-      'event',
-      'component_parser',
-      'design',
-      'parse',
-      'stringify',
-      'component',
-      'property',
-      'utc_offset',
-      'binary',
-      'period',
-      'duration',
-      'timezone',
-      'timezone_service',
-      'time',
-      'vcard_time',
-      'recur',
-      'recur_iterator'
-    ];
-
-    files.forEach(function(file) {
-      testSupport.require('/lib/ical/' + file + '.js');
-    });
+    return testSupport.require('/build/ical.js');
   };
 
   /**
@@ -98,6 +74,7 @@
       if (typeof(callback) !== 'undefined') {
         callback(lib);
       }
+      return lib;
     } else {
       window.require(file, callback);
     }
@@ -234,7 +211,7 @@
     testSupport.require('/test/support/performance.js');
 
     // Load it here so its pre-loaded in all suite blocks...
-    testSupport.requireICAL();
+    globalThis.ICAL = testSupport.requireICAL();
   }
 
 }());

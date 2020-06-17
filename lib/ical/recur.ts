@@ -308,7 +308,7 @@
         if (Array.isArray(kparts) && kparts.length == 1) {
           res[k.toLowerCase()] = kparts[0];
         } else {
-          res[k.toLowerCase()] = ICAL.helpers.clone(this.parts[k]);
+          res[k.toLowerCase()] = ICAL.helpers.clone(this.parts[k], false);
         }
       }
 

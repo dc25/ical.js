@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  * Portions Copyright (C) Philipp Kewisch, 2011-2015 */
 
-
 /**
  * This symbol is further described later on
  * @ignore
@@ -337,7 +336,7 @@ ICAL.RecurExpansion = (function() {
         result.splice(idx, 0, prop);
       }
 
-      var result = [];
+      var result:any[] = [];
       var props = component.getAllProperties(propertyName);
       var len = props.length;
       var i = 0;

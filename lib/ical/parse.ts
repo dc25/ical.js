@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  * Portions Copyright (C) Philipp Kewisch, 2011-2015 */
 
-
 /**
  * Contains various functions to parse iCalendar and vCard data.
  * @namespace
@@ -59,7 +58,7 @@ ICAL.parse = (function() {
    * @return {Object|Object[]}  A single jCal object, or an array thereof
    */
   function parser(input) {
-    var state: {[k: string]: any} = {};
+    var state: {[k: string]: any} | null = {};
     var root = state.component = [];
 
     state.stack = [root];

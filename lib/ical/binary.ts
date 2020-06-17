@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  * Portions Copyright (C) Philipp Kewisch, 2011-2015 */
 
-
 /**
  * This symbol is further described later on
  * @ignore
@@ -71,7 +70,7 @@ ICAL.Binary = (function() {
       var o1, o2, o3, h1, h2, h3, h4, bits, i = 0,
         ac = 0,
         enc = "",
-        tmp_arr = [];
+        tmp_arr:any[] = [];
 
       if (!data) {
         return data;
@@ -124,7 +123,7 @@ ICAL.Binary = (function() {
       var o1, o2, o3, h1, h2, h3, h4, bits, i = 0,
         ac = 0,
         dec = "",
-        tmp_arr = [];
+        tmp_arr:any[] = [];
 
       if (!data) {
         return data;

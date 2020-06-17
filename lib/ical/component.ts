@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  * Portions Copyright (C) Philipp Kewisch, 2011-2015 */
 
-
 /**
  * This symbol is further described later on
  * @ignore
@@ -156,7 +155,7 @@ ICAL.Component = (function() {
 
       if (name) {
         var comps = this.jCal[COMPONENT_INDEX];
-        var result = [];
+        var result:any[] = [];
 
         for (; i < jCalLen; i++) {
           if (name === comps[i][NAME_INDEX]) {
@@ -253,7 +252,7 @@ ICAL.Component = (function() {
 
       if (name) {
         var props = this.jCal[PROPERTY_INDEX];
-        var result = [];
+        var result:any[] = [];
 
         for (; i < jCalLen; i++) {
           if (name === props[i][NAME_INDEX]) {

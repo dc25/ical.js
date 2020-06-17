@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  * Portions Copyright (C) Philipp Kewisch, 2011-2015 */
 
-
 /**
  * This symbol is further described later on
  * @ignore
@@ -246,7 +245,7 @@ ICAL.RecurIterator = (function() {
       }
 
       if (this.rule.freq == "MONTHLY" && this.has_by_data("BYDAY")) {
-        var tempLast = null;
+        var tempLast:any = null;
         var initLast = this.last.clone();
         var daysInMonth = ICAL.Time.daysInMonth(this.last.month, this.last.year);
 
@@ -479,7 +478,7 @@ ICAL.RecurIterator = (function() {
       // XXX: This is probably bad for performance to allocate
       //      a new array for each month we scan, if possible
       //      we should try to optimize this...
-      var newRules = [];
+      var newRules:any[] = [];
 
       var ruleIdx = 0;
       var len = rules.length;
@@ -1093,7 +1092,7 @@ ICAL.RecurIterator = (function() {
 
           if (this.has_by_data("BYSETPOS")) {
             var set_pos_counter = 0;
-            var by_month_day = [];
+            var by_month_day:any[] = [];
             for (var day = 1; day <= daysInMonth; day++) {
               t.day = day;
               if (this.is_day_in_byday(t)) {
@@ -1209,7 +1208,7 @@ ICAL.RecurIterator = (function() {
 
     expand_by_day: function expand_by_day(aYear) {
 
-      var days_list = [];
+      var days_list:any[] = [];
       var tmp = this.last.clone();
 
       tmp.year = aYear;
